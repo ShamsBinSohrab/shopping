@@ -1,0 +1,9 @@
+<h4>Available Products</h4>
+<table>
+    <tr *ngFor="let product of products; let i = index">
+        <td>{{i + 1}}.</td>
+        <td style="width: 120px">{{product.showName()}}</td>
+        <td style="text-align: right">{{product.showPrice()}}</td>
+        <td style="width: 100px; text-align: center"><button (click)="onClickAddToCart(product.id)">Add to cart</button></td>
+    </tr>
+</table>
