@@ -12,6 +12,7 @@ import { CartProduct } from 'app/models/cart-product.model';
 export class CartComponent implements OnInit {
   private addedProductIds: number[] = []
   public cartProducts: CartProduct[] = [];
+  public grandTotal: number = 0;
 
   constructor(private shoppingService: ShoppingService, private productService: ProductService) {
       this.shoppingService.addToCartObservable.subscribe(
@@ -33,6 +34,7 @@ export class CartComponent implements OnInit {
             cp.addAnotherQuantity();
       });
     }
+    this.calculateGrantTotal();
   }
 
   public onRemoveFromCart = (cp: CartProduct) => {
@@ -43,6 +45,14 @@ export class CartComponent implements OnInit {
       this.cartProducts.splice(this.cartProducts.indexOf(cp), 1);
       this.addedProductIds.splice(this.addedProductIds.indexOf(cp.product.id), 1);
     }
+    this.calculateGrantTotal();
+  }
+  
+  public calculateGrantTotal = () => {
+    this.grandTotal = 0;
+    this.cartProducts.forEach((cp) => {
+      this.grandTotal += cp.total;
+    });
   }
 
   
