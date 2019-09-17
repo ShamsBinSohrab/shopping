@@ -1,8 +1,9 @@
 <h4>Your shopping cart</h4>
 <table>
-        <tr *ngFor="let cp of cartProducts">
-            <td style="width: 120px">{{cp.product.showName()}}</td>
-            <td style="width: 40px;text-align: center;">{{cp.quantity}}</td>
-            <td style="text-align: right">{{cp.showTotal()}}</td>
-        </tr>
+    <tr *ngFor="let cp of cartProducts">
+        <td style="width: 120px">{{cp.product.showName()}}</td>
+        <td style="width: 40px;text-align: center;">{{cp.quantity}}</td>
+        <td style="text-align: right">{{cp.showTotal()}}</td>
+        <td><button (click)="onRemoveFromCart(cp)">X</button></td>
+    </tr>
 </table>

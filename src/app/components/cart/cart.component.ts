@@ -22,19 +22,27 @@ export class CartComponent implements OnInit {
   ngOnInit() {
   }
 
-  private addToCart(id: number) {
-    if (this.addedProductIds.indexOf(id) === -1) {
-      let product: Product = this.productService.getProductById(id); 
+  private addToCart(product: Product) {
+    if (this.addedProductIds.indexOf(product.id) === -1) {
       this.cartProducts.push(new CartProduct(product));
-      this.addedProductIds.push(id);
+      this.addedProductIds.push(product.id);
     }
     else {
       this.cartProducts.forEach((cp) => {
-          if (cp.product.id === id) 
+          if (cp.product.id === product.id) 
             cp.addAnotherQuantity();
       });
     }
-  
+  }
+
+  public onRemoveFromCart = (cp: CartProduct) => {
+    if (cp.quantity > 1) {
+      cp.reduceOneQuantity();
+    }
+    else {
+      this.cartProducts.splice(this.cartProducts.indexOf(cp), 1);
+      this.addedProductIds.splice(this.addedProductIds.indexOf(cp.product.id), 1);
+    }
   }
 
   

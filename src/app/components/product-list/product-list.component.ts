@@ -18,8 +18,8 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
   }
 
-  public onClickAddToCart(id: number) {
-    this.shoppingService.addToCart(id);
+  public onClickAddToCart(product: Product) {
+    this.shoppingService.addToCart(product);
   }
 
 }

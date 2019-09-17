@@ -16,6 +16,11 @@ export class CartProduct {
         this.calculateTotal();
     }
 
+    public reduceOneQuantity() : void {
+        this.quantity -= 1;
+        this.calculateTotal();
+    }
+
     private calculateTotal() : void {
         this.total = this.quantity * this.product.price;
     }
