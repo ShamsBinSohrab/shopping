@@ -3,6 +3,7 @@ import { Product } from 'app/models/product.model';
 import { ShoppingService } from 'app/services/shopping.service';
 import { ProductService } from 'app/services/product.service';
 import { CartProduct } from 'app/models/cart-product.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit {
   public cartProducts: CartProduct[] = [];
   public grandTotal: number = 0;
 
-  constructor(private shoppingService: ShoppingService, private productService: ProductService) {
+  constructor(private shoppingService: ShoppingService, private productService: ProductService, private router: Router) {
       this.shoppingService.addToCartObservable.subscribe(
           (id) => this.addToCart(id)
       );
@@ -53,6 +54,10 @@ export class CartComponent implements OnInit {
     this.cartProducts.forEach((cp) => {
       this.grandTotal += cp.total;
     });
+  }
+
+  public onCheckout(cp: CartProduct) {
+    
   }
 
   

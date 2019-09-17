@@ -10,6 +10,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { CartComponent } from './components/cart/cart.component';
 import { ShoppingService } from './services/shopping.service';
 import { ProductService } from './services/product.service';
+import { RegestrationComponent } from './components/regestration/regestration.component';
 
 const applicationRoutes: Routes = ApplicationRouting;
 
@@ -17,7 +18,8 @@ const applicationRoutes: Routes = ApplicationRouting;
   declarations: [
     AppComponent,
     ProductListComponent,
-    CartComponent
+    CartComponent,
+    RegestrationComponent
   ],
   imports: [
     BrowserModule,
